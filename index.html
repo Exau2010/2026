@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Page festive 🎉</title>
+
+  <!-- Confettis -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Animations (Animate.css) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    /* ---- Image de fond ---- */
+    body {
+      font-size: 50px;
+      margin: 0;
+      padding: 0;
+      background-image: url("christmas-6809681_1280.webp.png"); /* <-- remplace ici */
+      background-size: cover;     /* l’image prend tout l’écran */
+      background-position: center;
+      height: 100vh;
+      color: white;
+      font-family: "Arial", sans-serif;
+      text-shadow: 2px 2px 8px black; /* lisibilité du texte */
+    }
+    
+    .one{
+      
+    }
+
+    /* ---- centrer le contenu ---- */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      backdrop-filter: brightness(0.9); /* filtrer légèrement l’image */
+    }
+
+    /* ---- pulsation du sous-titre ---- */
+    .pulse {
+      animation: pulseText 2s infinite;
+    }
+
+    @keyframes pulseText {
+      0% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 0.6; transform: scale(1); }
+    } 
+    
+    .con {
+      background-image: url("christmas-6809681_1280.webp.png");
+      justify-items: center;
+      margin-bottom: 500px;
+      width: 600px;
+      height: 600px;
+      border-radius: 20px;
+      box-shadow: 5px 10px 10px 10px black;
+    }
+    
+    .con input{
+      margin-top: 200px;
+      margin-left: 110px;
+      border-radius: 20px;
+      padding: 20px;
+      width: 300px;
+      font-size: 30px;
+    }
+    
+    .con h3{
+      background : linear-gradient(to right, #fd7db9, #f80576);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 5px 10px 10px deeppink;
+    }
+    .one .con button{
+      position: relative;
+      display: block;
+      margin-left: 30px;
+      width: 200px;
+      border-radius: 15px;
+      padding: 30px
+      
+    }
+    
+    .two {
+      justify-items: center;
+      display: none;
+    }
+    .two .cadre{
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.547);
+      color: white;
+      padding: 20px;
+      margin-top: 200px;
+      width: 700px;
+      height: 1300px;
+      text-align: center;
+    }
+    
+    .two .cadre p{
+      font-size: 40px;
+      font-family: Cambria;
+      font-weight: 0;
+      text-shadow: none;
+    }
+    
+    .two .cadre h3{
+      color: white;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="one" id="one">
+    <div class="container">
+      <h1 class="animate__animated animate__fadeInDown">Bienvenue 🎄✨</h1>
+      <h2 class="pulse">Que la fête commence 🎉</h2>
+      
+      <div class="con">
+        <input type="text" placeholder="Entrez votre nom" id="input">
+        <h3>2026</h3>
+        
+        <button id="btn" onclick="recu()">Page suivante</button>
+      </div>
+    </div>
+    
+    
+  </div>
+  
+  <div class="two" id="two">
+    
+    <div class="cadre" id="cadre">
+      <p id="p">Salut</p>
+      <p>Je t'envoie ceci parce que tout au long de l'année 2025 tu as eté a mes coté, mon soutien dans les mauvais moment comme dans les bons, toujours là quand j'en avais besoin! 🥹🥹.Une lumière sur mon sentier, une bénédiction pour ma vie , un souhait exaucé!
+      😁
+      </p>
+      <br>
+      <p>Tout ca pour dire que j'aimerais te revoir en cette nouvelle année 2026. Que ta presence soit en continu dans ma vie aujourd'hui et demain😏🔥 pendant le plus longtemps possible. Notre amitié subsistera à jamais ❤️🥰</p>
+      <p>Soit béni pour toujours 🙏🙏🙏🙏🙏🙏🙏</p>
+      
+    </div>
+    
+  </div>
+  
+  <script>
+  // Confettis automatiques au chargement
+  window.onload = () => {
+    const duration = 5000; // 5 secondes
+    const end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 10,
+        spread: 1000,
+        origin: { y: 0.6 }
+      });
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    }());
+  };
+
+  // ----------- Fonction corrigée ----------------
+  function recu() {
+    let input = document.getElementById("input").value;
+
+    if (input.trim() !== "") {
+      // cacher la première partie
+      document.getElementById("one").style.display = "none";
+
+      // montrer la deuxième
+      document.getElementById("two").style.display = "block";
+
+      // afficher le nom dans le cadre
+      document.getElementById("p").textContent = input;
+    } else {
+      alert("Entrez un nom");
+    }
+  }
+</script>
+    
+
+
+</body>
+  </html>
